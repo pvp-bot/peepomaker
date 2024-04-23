@@ -1,23 +1,36 @@
 <html>
 <head>
     <title>peepo maker</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue" rel="stylesheet">
 </head>
+<style>
+    body {background-color: #ede8df;color: #393938;text-align: center;font-family: "Comic Neue", sans-serif;font-weight: bold;font-size: 2.0rem;}
+</style>
 <body>
     <!-- from BarryCarlyon: https://github.com/BarryCarlyon/twitch_misc/blob/main/authentication/implicit_auth/index.html -->
-  
+
+    <div id="instructions" style="font-size: 3.0rem;"></div>
+    <div id="access_token" style="font-size: 5.0rem;"></div>
+    <img src="icon.png">
+    
     <script type="text/javascript">
         // These are set for the GitHub Pages Example
         var client_id = 'uajuvalhp72k4yc7lebcj0wmmqm9gx';
         var redirect = 'https://pvp-bot.github.io/peepomaker/';
 
         document.getElementById('authorize_public').setAttribute('href', `https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(redirect)}&response_type=token`);
+        document.getElementById('instructions').textContent = '';
         document.getElementById('access_token').textContent = '';
 
         if (document.location.hash && document.location.hash != '') {
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
             if (parsedHash.get('access_token')) {
                 var access_token = parsedHash.get('access_token');
-                document.getElementById('access_token').textContent = `Your Access Token extracted from the #url is ${access_token}`;
+                document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
+                document.getElementById('access_token').textContent = `${access_token}`;
 
                 document.getElementById('user_data').textContent = 'Loading';
 
