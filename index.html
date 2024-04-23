@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>peepo maker</title>
+    <title>peepo maker auth</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
     <img src="icon.png">
     <div id="instructions" style="font-size: 2.0rem;"></div>
     <div id="access_token" style="font-size: 3.0rem;font-weight: bold;"></div>
+    <div id="info" style="font-size: 1.2rem;padding-top:8px;"></div>
     
     <script type="text/javascript">
         // These are set for the GitHub Pages Example
@@ -23,6 +24,7 @@
 
         document.getElementById('instructions').textContent = '';
         document.getElementById('access_token').textContent = '';
+        document.getElementById('info').textContent = '';
 
         if (document.location.hash && document.location.hash != '') {
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
@@ -30,6 +32,7 @@
                 var access_token = parsedHash.get('access_token');
                 document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
                 document.getElementById('access_token').textContent = `${access_token}`;
+                document.getElementById('info').textContent = `(this token only grants access to read your username/id to save your peepo)`;
 
                 // document.getElementById('user_data').textContent = 'Loading';
 
