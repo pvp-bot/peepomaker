@@ -28,7 +28,10 @@
 
         if (document.location.hash && document.location.hash != '') {
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
-            if (parsedHash.get('access_token')) {
+            if (parsedHash.get('scope') != "") {
+                document.getElementById('instructions').textContent = `more than basic scope has been requested, do not use this access token and report this error`;
+            }
+            else if (parsedHash.get('access_token')) {
                 var access_token = parsedHash.get('access_token');
                 document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
                 document.getElementById('access_token').textContent = `${access_token}`;
