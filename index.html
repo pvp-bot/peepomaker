@@ -20,7 +20,7 @@
     <script type="text/javascript">
         // These are set for the GitHub Pages Example
         var client_id = 'uajuvalhp72k4yc7lebcj0wmmqm9gx';
-        var redirect = 'https://pvp-bot.github.io/peepomaker/';
+        var redirect = 'https://pvp-bot.github.io/peepomaker/'; // production
 
         document.getElementById('instructions').textContent = '';
         document.getElementById('access_token').textContent = '';
@@ -33,10 +33,25 @@
             }
             else if (parsedHash.get('access_token')) {
                 var access_token = parsedHash.get('access_token');
-                document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
-                document.getElementById('access_token').textContent = `${access_token}`;
-                document.getElementById('info').textContent = `(this token only has access to read your username/id to save your peepo)`;
+                // document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
+                // document.getElementById('access_token').textContent = `${access_token}`;
+                // document.getElementById('info').textContent = `(this token only has access to read your username/id to save your peepo)`;
 
+
+
+                // Send the code back to the parent page
+                window.parent.postMessage(
+                {
+                    type: "twitch-auth-code",
+                    code: access_token,
+                },
+                // "https://localhost:7011/"  // debug
+                "https://xhg.itch.io/peepomaker/"  // production
+                );
+                document.getElementById('access_token').textContent = `authenticated, you can now close this tab`;
+
+
+                
                 // document.getElementById('user_data').textContent = 'Loading';
 
                 // call API
