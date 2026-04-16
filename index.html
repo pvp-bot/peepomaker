@@ -45,10 +45,10 @@
                     type: "twitch-auth-code",
                     code: access_token,
                     },
-                    "http://localhost:7171"   // debug
+                    "http://128.0.0.1:7171"   // debug
                     // "https://xhg.itch.io/peepomaker/"  // production
                 );
-                window.close();  // optionally close the auth tab
+                // window.close();  // optionally close the auth tab
                 }
                 document.getElementById('access_token').textContent = `authenticated, you can now close this tab`;
 
