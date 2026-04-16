@@ -38,16 +38,18 @@
                 // document.getElementById('info').textContent = `(this token only has access to read your username/id to save your peepo)`;
 
 
-
-                // Send the code back to the parent page
-                window.parent.postMessage(
-                {
+                // If this page was opened by another window
+                if (window.opener) {
+                window.opener.postMessage(
+                    {
                     type: "twitch-auth-code",
                     code: access_token,
-                },
-                "http://localhost:7171/"  // debug
-                // "https://xhg.itch.io/peepomaker/"  // production
+                    },
+                    "http://localhost:7171"   // debug
+                    // "https://xhg.itch.io/peepomaker/"  // production
                 );
+                window.close();  // optionally close the auth tab
+                }
                 document.getElementById('access_token').textContent = `authenticated, you can now close this tab`;
 
 
