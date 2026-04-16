@@ -33,26 +33,24 @@
             }
             else if (parsedHash.get('access_token')) {
                 var access_token = parsedHash.get('access_token');
-                // document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
-                // document.getElementById('access_token').textContent = `${access_token}`;
-                // document.getElementById('info').textContent = `(this token only has access to read your username/id to save your peepo)`;
+                document.getElementById('instructions').textContent = `paste this access token into peepo maker:`;
+                document.getElementById('access_token').textContent = `${access_token}`;
+                document.getElementById('info').textContent = `(this token only has access to read your username/id to save your peepo)`;
+
 
 
                 // If this page was opened by another window
-                if (window.opener) {
-                window.opener.postMessage(
-                    {
-                    type: "twitch-auth-code",
-                    code: access_token,
-                    },
-                    "http://127.0.0.1:7171"   // debug
-                    // "https://xhg.itch.io/peepomaker/"  // production
-                );
+                // if (window.opener) {
+                // window.opener.postMessage(
+                //     {
+                //     type: "twitch-auth-code",
+                //     code: access_token,
+                //     },
+                //     "http://127.0.0.1:7171"   // debug
+                //     // "https://xhg.itch.io/peepomaker/"  // production
+                // );
                 // window.close();  // optionally close the auth tab
-                }
-                document.getElementById('access_token').textContent = `authenticated, you can now close this tab`;
-
-
+                // }
                 
                 // document.getElementById('user_data').textContent = 'Loading';
 
